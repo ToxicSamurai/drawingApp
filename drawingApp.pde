@@ -1,3 +1,6 @@
+//By ToxicSamurai
+//You may freely use or edit
+
 int r, g, b;
 float mouseX2, mouseY2;
 
