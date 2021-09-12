@@ -1,7 +1,5 @@
-//By ToxicSamurai
-//You may freely use or edit
-
-int r, g, b;
+int r = 0, g = 0, b = 0;
+int weight = 1;
 float mouseX2, mouseY2;
 
 void setup() {
@@ -11,43 +9,11 @@ void setup() {
 }
 
 void draw() {
-  UI();
   buttonPress();
+  UI();
   drawLine();
   currentColor();
   println(mouseX, mouseY);
-}
-
-void UI() {
-  stroke(0);
-  fill(255);
-  //Column 1 (Black, LRed, LGreen, Blue, Pink, Yellow)
-  fill(0);
-  rect(width/20, height/20+2*37.5, 37.5, 37.5);
-  fill(255, 0, 0);
-  rect(width/20, height/20+3*37.5, 37.5, 37.5);
-  fill(0, 255, 0);
-  rect(width/20, height/20+4*37.5, 37.5, 37.5);
-  fill(0, 0, 255);
-  rect(width/20, height/20+5*37.5, 37.5, 37.5);
-  fill(255, 0, 255);
-  rect(width/20, height/20+6*37.5, 37.5, 37.5);
-  fill(255, 255, 0);
-  rect(width/20, height/20+7*37.5, 37.5, 37.5);
-
-  //Column 2 (White, Red, Green, LBlue, Purple, Gray)
-  fill(255);
-  rect(width/20+37.5, height/20+2*37.5, 37.5, 37.5);
-  fill(180, 0, 0);
-  rect(width/20+37.5, height/20+3*37.5, 37.5, 37.5);
-  fill(0, 150, 0);
-  rect(width/20+37.5, height/20+4*37.5, 37.5, 37.5);
-  fill(0, 255, 255);
-  rect(width/20+37.5, height/20+5*37.5, 37.5, 37.5);
-  fill(153, 0, 153);
-  rect(width/20+37.5, height/20+6*37.5, 37.5, 37.5);
-  fill(128, 128, 128);
-  rect(width/20+37.5, height/20+7*37.5, 37.5, 37.5);
 }
 
 void buttonPress() {
@@ -172,6 +138,92 @@ void buttonPress() {
     }
     println("Gray");
   }
+
+  //strokeWeight buttons
+  //Small
+  if (mouseX > width/20 && mouseX < width/20+75 && mouseY > height/2 && mouseY < height/2+75) {
+    if(mousePressed){
+     weight = 1;
+    }
+  }
+
+  //Medium
+  if (mouseX > width/20 && mouseX < width/20+75 && mouseY > height/2+75 && mouseY < height/2+2*75) {
+    if(mousePressed){
+      weight = 5;
+    }
+  }
+
+  //Large
+  if (mouseX > width/20 && mouseX < width/20+75 && mouseY > height/2+2*75 && mouseY < height/2+3*75) {
+    if(mousePressed){
+      weight = 10;
+    }
+  }
+
+  //Clear button
+  if (mouseX > width/20 && mouseX < width/20+75 && mouseY > height/2+3*75+50 && mouseY < height/2+4*75+50){
+    if(mousePressed){
+      background(155);
+    }
+  }
+}
+
+void UI() {
+  stroke(0);
+  strokeWeight(1);
+
+  //Column 1 (Black, LRed, LGreen, Blue, Pink, Yellow)
+  fill(0);
+  rect(width/20, height/20+2*37.5, 37.5, 37.5);
+  fill(255, 0, 0);
+  rect(width/20, height/20+3*37.5, 37.5, 37.5);
+  fill(0, 255, 0);
+  rect(width/20, height/20+4*37.5, 37.5, 37.5);
+  fill(0, 0, 255);
+  rect(width/20, height/20+5*37.5, 37.5, 37.5);
+  fill(255, 0, 255);
+  rect(width/20, height/20+6*37.5, 37.5, 37.5);
+  fill(255, 255, 0);
+  rect(width/20, height/20+7*37.5, 37.5, 37.5);
+
+  //Column 2 (White, Red, Green, LBlue, Purple, Gray)
+  fill(255);
+  rect(width/20+37.5, height/20+2*37.5, 37.5, 37.5);
+  fill(180, 0, 0);
+  rect(width/20+37.5, height/20+3*37.5, 37.5, 37.5);
+  fill(0, 150, 0);
+  rect(width/20+37.5, height/20+4*37.5, 37.5, 37.5);
+  fill(0, 255, 255);
+  rect(width/20+37.5, height/20+5*37.5, 37.5, 37.5);
+  fill(153, 0, 153);
+  rect(width/20+37.5, height/20+6*37.5, 37.5, 37.5);
+  fill(128, 128, 128);
+  rect(width/20+37.5, height/20+7*37.5, 37.5, 37.5);
+
+  //strokeWeight buttons
+  fill(255);
+  //Small
+  rect(width/20, height/2, 75, 75);
+  stroke(r, g, b);
+  line(width/20+12.5, height/2+37.5, width/20+62.5, height/2+37.5);
+  //Medium
+  stroke(0);
+  rect(width/20, height/2+75, 75, 75);
+  fill(r, g, b);
+  rect(width/20+12.5, height/2+75+37.5, 50, 5, 90);
+  //Large
+  fill(255);
+  rect(width/20, height/2+2*75, 75, 75);
+  fill(r, g, b);
+  rect(width/20+12.5, height/2+75+3*35.5, 50, 10, 90);
+
+  //Clear button
+  fill(255);
+  rect(width/20, height/2+3*75+50, 75, 75);
+  fill(0);
+  textSize(24);
+  text("Clear", width/20+8, height/2+3*75+50+45);
 }
 
 void drawLine() {
@@ -179,6 +231,7 @@ void drawLine() {
     if (mousePressed) {
       if (mousePressed) {
         stroke(r, g, b);
+        strokeWeight(weight);
         line(mouseX, mouseY, mouseX2, mouseY2);
       }
     }
@@ -188,9 +241,8 @@ void drawLine() {
 }
 
 void currentColor() {
+  stroke(0);
+  strokeWeight(weight);
   fill(r, g, b);
   ellipse(50, 50, 65, 65);
-}
-
-void colors() {
 }
