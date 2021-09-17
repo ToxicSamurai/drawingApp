@@ -1,5 +1,5 @@
 //By ToxicSamurai
-//You may freely use or edit this code
+//Licensed under Creative Commons CC-BY-NC-SA
 
 //Vars for stroke color
 int r = 0, g = 0, b = 0;
